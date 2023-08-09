@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\IncomeExpenseCondition;
 use App\Http\Middleware\TokenVarificationMiddleware;
 
 
@@ -49,4 +50,7 @@ Route::post('/delete-expense',[ExpenseController::class, 'ExpenseDelete'])->midd
 Route::get('/list-expense',[ExpenseController::class, 'ExpenseList'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/update-expense',[ExpenseController::class, 'ExpenseUpdate'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/expense-by-id',[ExpenseController::class, 'ExpenseById'])->middleware([TokenVarificationMiddleware::class]);
+
+
+Route::get('/netIncome',[IncomeExpenseCondition::class, 'NetIncome'])->middleware([TokenVarificationMiddleware::class]);
 
