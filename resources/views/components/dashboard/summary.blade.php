@@ -7,7 +7,12 @@
                     <div class="row">
                         <div class="col-9 col-lg-8 col-md-8 col-sm-9">
                             <div>
-                                <h3 id="netIncome" class="mb-0 text-capitalize font-weight-bold">01</h3>
+                                <h4 id="netIncome" class="mb-0 text-capitalize font-weight-bold">01</h4>
+                            </div>
+                        </div>
+                        <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
+                            <div class="icon icon-shape bg-gradient-primary shadow float-end border-radius-md">
+                                <img class="w-100 " src="{{asset('images/icon.svg')}}"/>
                             </div>
                         </div>
                         
@@ -22,8 +27,7 @@
                     <div class="row">
                         <div class="col-9 col-lg-8 col-md-8 col-sm-9">
                             <div>
-                                <h3 class="mb-0 text-capitalize font-weight-bold">01</h3>
-                                <p class="mb-0 text-sm">Title</p>
+                                <h4 id="income" class="mb-0 text-capitalize font-weight-bold">01</h4>
                             </div>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
@@ -42,8 +46,7 @@
                     <div class="row">
                         <div class="col-9 col-lg-8 col-md-8 col-sm-9">
                             <div>
-                                <h3 class="mb-0 text-capitalize font-weight-bold">01</h3>
-                                <p class="mb-0 text-sm">Title</p>
+                                <h4 id="expense" class="mb-0 text-capitalize font-weight-bold">01</h4>
                             </div>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
@@ -63,9 +66,10 @@
    async function netIncome() {
         showLoader();
         let res = await axios.get('/netIncome');
-        document.getElementById('netIncome').textContent = `Net Income: ${res.data['netIncome']} BDT`;
         hideLoader();
-
+        document.getElementById('netIncome').textContent = `Net Income: ${res.data['netIncome']} BDT`;
+        document.getElementById('income').textContent = `Total Income: ${res.data['totalIncome']} BDT`;
+        document.getElementById('expense').textContent = `Total Expense: ${res.data['totalExpense']} BDT`;
     }
     
 </script>

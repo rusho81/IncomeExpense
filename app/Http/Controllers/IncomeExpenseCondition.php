@@ -13,6 +13,10 @@ class IncomeExpenseCondition extends Controller
         $user_id=$request->header('id');
         $totalIncome = Income::where('user_id', $user_id)->sum('amount');
         $totalExpenses = Expense::where('user_id', $user_id)->sum('amount');
-        return response()->json(["netIncome" => $totalIncome -$totalExpenses]);
+        return response()->json([
+            "netIncome" => $totalIncome -$totalExpenses,
+            "totalIncome" => $totalIncome,
+            "totalExpense" => $totalExpenses
+        ]);
     }
 }
